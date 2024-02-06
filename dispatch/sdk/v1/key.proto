@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+service SigningKeyService {
+  rpc CreateSigningKey(CreateSigningKeyRequest) returns (CreateSigningKeyResponse);
+  rpc ListSigningKeys(ListSigningKeysRequest) returns (ListSigningKeysResponse);
+  rpc DeleteSigningKey(DeleteSigningKeyRequest) returns (DeleteSigningKeyResponse);
+}
+
+message CreateSigningKeyRequest {}
+
+message CreateSigningKeyResponse {
+  SigningKey key = 1;
+}
+
+message DeleteSigningKeyRequest {
+  string signing_key_id = 1;
+}
+
+message DeleteSigningKeyResponse {}
+
+message ListSigningKeysRequest {}
+
+message ListSigningKeysResponse {
+  repeated SigningKey keys = 1;
+}
+
+message SigningKey {
+  string signing_key_id = 1;
+  AsymmetricKey asymmetric_key = 2;
+}
+
+message AsymmetricKey {
+  bytes public_key = 1;
+}
