@@ -29,7 +29,7 @@ To authenticate with the Dispatch API, a client must present a valid API key
 in the `Authorization` header of the HTTP requests, for example:
 
 ```sh
-curl \
+curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchRequest/Dispatch \
     -H "Authorization: Bearer $DISPATCH_API_KEY" \
     ...
 ```
