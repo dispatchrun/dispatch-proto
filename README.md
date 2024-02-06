@@ -1,3 +1,7 @@
+[![Build](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml)
+[![MIT License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
+[![buf.build](https://img.shields.io/badge/buf.build-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
+
 # Dispatch API
 
 This module contains the protobuf definitions for the Dispatch API.
