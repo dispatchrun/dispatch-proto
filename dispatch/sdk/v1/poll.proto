@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+import "buf/validate/validate.proto";
+import "dispatch/sdk/v1/call.proto";
+import "google/protobuf/duration.proto";
+
+// Poll is a directive to make asynchronous calls and join on their results.
+message Poll {
+  // Snapshot of the coroutine state that will be used in the next run to
+  // resume the function.
+  bytes coroutine_state = 1;
+
+  // Calls to make asynchronously.
+  repeated Call calls = 2;
+
+  // Max wait is the maximum amount of time the task should be suspended for
+  // while waiting for call results.
+  google.protobuf.Duration max_wait = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).duration.gte = {seconds: 1}
+  ];
+
+  // Max results is the maximum number of call results to deliver in the
+  // poll response. The coroutine will be suspended until either max_results
+  // are available, or the max_wait timeout is reached, whichever comes first.
+  int32 max_results = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int32.gte = 1,
+    (buf.validate.field).int32.lte = 1000
+  ];
+}
+
+// PollResult is the response to a Poll directive.
+message PollResult {
+  // The coroutine state that was recorded by the coroutine when it was last
+  // paused.
+  bytes coroutine_state = 1;
+
+  // The list of results from calls that were made by the coroutine and
+  // completed during the poll.
+  repeated CallResult results = 2;
+}

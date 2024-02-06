@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+import "buf/validate/validate.proto";
+import "dispatch/sdk/v1/error.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+
+// Call is a directive for asynchronous function invocation.
+message Call {
+  // Correlation ID is an opaque value that gets repeated in CallResult to
+  // correlate asynchronous calls with their results.
+  //
+  // This field is ignored when used in a dispatch request.
+  uint64 correlation_id = 1;
+
+  // Endpoint is an identifier of the location where the service hosting the
+  // function can be reached.
+  //
+  // This field might be omitted when the endpoint is known. For example, when
+  // a submitting a call to a function in the same service, the endpoint is
+  // assumed to be the same as the current service.
+  string endpoint = 2 [(buf.validate.field).string.uri = true];
+
+  // Identifier of the function to call. This value is sent in the run request
+  // received by the function service when the asynchronous call is made.
+  string function = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^[a-zA-Z_][a-zA-Z0-9_]*$"
+  ];
+
+  // Arguments to the coroutine.
+  google.protobuf.Any input = 4;
+
+  // Expiration is the maximum time the function is allowed to run. If the
+  // function does not complete within this time, the call is considered
+  // failed and the result will contain an error.
+  //
+  // The value might be capped to a maximum by the service handling the call.
+  google.protobuf.Duration expiration = 5 [(buf.validate.field).duration.gte = {seconds: 0}];
+}
+
+// CallResult is the result of a call operation.
+message CallResult {
+  // Correlation ID is the value that was originally passed in the Call message.
+  // This field is intended to be used by the function to correlate the result
+  // with the original call.
+  uint64 correlation_id = 1;
+
+  // The result of the call.
+  google.protobuf.Any output = 2;
+
+  // If the field is set, it contains a representation of any error that
+  // prevented the call from completing successfully.
+  //
+  // It is valid to have both an output and an error, in which case the output
+  // might contain a partial result.
+  Error error = 3;
+}

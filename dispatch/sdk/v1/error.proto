@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+// Error represents a failure to execute a request. The type and message are
+// arbitrary and depend on the application that handled the execution.
+//
+// Categorization of success and failure conditions is done via the status
+// field in the ExecuteResponse message.
+message Error {
+  string type = 1;
+  string message = 2;
+}

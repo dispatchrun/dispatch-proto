@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+import "buf/validate/validate.proto";
+import "dispatch/sdk/v1/call.proto";
+
+// Exit is the directive used by functions to instruct the caller that the
+// execution has completed.
+message Exit {
+  // Result of the function run.
+  CallResult result = 1 [(buf.validate.field).required = true];
+
+  // Optional tail call to trigger another function call.
+  //
+  // Tail calls are useful to replace the current function run with a different
+  // piece of code, and potentially with a different input.
+  Call tail_call = 2;
+}

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+import "dispatch/sdk/v1/exit.proto";
+import "dispatch/sdk/v1/poll.proto";
+import "dispatch/sdk/v1/status.proto";
+import "google/protobuf/any.proto";
+
+// The FunctionService service is used to interface with programmable endpoints
+// exposing remote functions.
+service FunctionService {
+  // Run runs the function identified by the request, and returns a response
+  // that either contains a result when the function completed, or a poll
+  // directive and the associated coroutine state if the function was suspended.
+  rpc Run(RunRequest) returns (RunResponse) {}
+}
+
+// RunRequest is received by calls to the Run method of FunctionService.
+message RunRequest {
+  // Identifier of the function to run.
+  //
+  // This value corresponds to the function name that was originally submitted
+  // by the dispatch request.
+  string function = 1;
+
+  // The function run is associated a directive that defines whether the run
+  // is a new invocation of the function, or a continuation of a suspended
+  // coroutine.
+  oneof directive {
+    // On the first run of a function, the input field contains the parameters
+    // to pass to the function.
+    //
+    // This is the same value that was originally passed in the dispatch request
+    // that triggered the function to run.
+    google.protobuf.Any input = 2;
+
+    // PollResult represents the result of a poll operation. When a previous
+    // function run was suspended by returning a poll directive to the caller,
+    // the following run of the function resumes execution and provides the
+    // set of results for operations that have completed.
+    PollResult poll_result = 3;
+  }
+}
+
+// RunResponse is returned by calls to the Run method of FunctionService.
+message RunResponse {
+  // Status defines the status of the function run. This field is used by the
+  // caller to categorize the condition under which the function run returned.
+  Status status = 1;
+
+  // The function run instructs the caller of what it expects to happen next by
+  // embedding a directive in the response.
+  oneof directive {
+    // When the function run completes, an exit directive is returned to the
+    // caller. The exit directive contains the result of the function run, along
+    // with an optional tail call to trigger the run of another function.
+    Exit exit = 2;
+
+    // When the function run is suspended, a poll directive is returned to the
+    // caller. The poll directive contains the state of the coroutine, and a set
+    // of calls to make asynchronously. The caller is expected to wait for the
+    // results of the calls, and then resume the function run by providing the
+    // results in a subsequent RunRequest.
+    Poll poll = 3;
+  }
+}

@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package dispatch.sdk.v1;
+
+import "buf/validate/validate.proto";
+import "dispatch/sdk/v1/call.proto";
+
+// DispatchService is a service allowing the trigger of programmable endpoints
+// from a dispatch SDK.
+service DispatchService {
+  // Dispatch submits a list of asynchronous function calls to the service.
+  //
+  // The method does not wait for executions to complete before returning,
+  // it only ensures that the creation was persisted, and returns unique
+  // identifiers to represent the executions.
+  //
+  // The request contains a list of executions to be triggered; the method is
+  // atomic, either all executions are recorded, or none and an error is
+  // returned to explain the reason for the failure.
+  rpc Dispatch(DispatchRequest) returns (DispatchResponse) {}
+}
+
+// DispatchRequest is received by calls to the Dispatch method of
+// DispatchService.
+message DispatchRequest {
+  option (buf.validate.message).cel = {
+    id: "dispatch.request.calls.endpoint.nonempty",
+    message: "Call endpoint cannot be empty",
+    expression: "this.calls.all(call, has(call.endpoint))"
+  };
+
+  option (buf.validate.message).cel = {
+    id: "dispatch.request.calls.endpoint.scheme",
+    message: "Call endpoint must be a http or https URL",
+    expression: "this.calls.all(call, call.endpoint.startsWith('http://') || call.endpoint.startsWith('https://'))"
+  };
+
+  // List of calls to dispatch.
+  //
+  // The calls must have a non-empty endpoint which are valid http or https URLs.
+  //
+  // The correlation ids are ignored in this context.
+  repeated Call calls = 1;
+}
+
+// DispatchResponse is returned by calls to the Dispatch method of
+// DispatchService.
+message DispatchResponse {
+  // List of opque identifiers representing the dispatched calls from the
+  // corresponding request.
+  //
+  // The identifiers are given in the same order as the calls in the request,
+  // allowing the client to correlate them by index.
+  repeated string dispatch_ids = 1;
+}
