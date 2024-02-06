@@ -13,26 +13,15 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        directory:
-        - proto
-        - sdk
     steps:
     - uses: actions/checkout@v3
     - uses: bufbuild/buf-setup-action@v1
     - uses: bufbuild/buf-lint-action@v1
       with:
         buf_token: ${{ secrets.BUF_TOKEN }}
-        input: ${{ matrix.directory }}
 
   breaking:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        directory:
-        - proto
-        - sdk
     steps:
     - uses: actions/checkout@v3
     - uses: bufbuild/buf-setup-action@v1
@@ -40,20 +29,13 @@ jobs:
       with:
         against: https://github.com/stealthrocket/dispatch.git#branch=${{ env.GITHUB_BASE_REF || 'main' }},subdir=${{ matrix.directory }}
         buf_token: ${{ secrets.BUF_TOKEN }}
-        input: ${{ matrix.directory }}
 
   push:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        directory:
-        - proto
-        - sdk
     steps:
     - uses: actions/checkout@v3
     - uses: bufbuild/buf-setup-action@v1
     - uses: bufbuild/buf-push-action@v1
       with:
         buf_token: ${{ secrets.BUF_TOKEN }}
-        input: ${{ matrix.directory }}
         draft: ${{ github.ref_name != 'main' }}
