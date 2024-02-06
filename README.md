@@ -61,7 +61,7 @@ The signature is embedded in a `Signature` header, for example:
 The request signature is generated using the ed25519 cryptographic function,
 using the request body as input.
 
-### Contributing
+## Contributing
 
 Contributions are always welcome! Would you spot a typo or anything that needs
 to be improved, feel free to send a pull request.
