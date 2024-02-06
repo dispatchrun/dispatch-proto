@@ -24,9 +24,11 @@ generate [connectrpc][connectrpc] or [gRPC][grpc] clients and servers.
 To authenticate with the Dispatch API, a client must present a valid API key
 in the `Authorization` header of the HTTP requests, for example:
 
-    curl \
-        -H "Authorization: Bearer $DISPATCH_API_KEY" \
-        ...
+```sh
+curl \
+    -H "Authorization: Bearer $DISPATCH_API_KEY" \
+    ...
+```
 
 To obtain an API key, follow the instructions to [sign up for Dispatch][signup].
 
