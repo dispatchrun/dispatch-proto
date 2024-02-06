@@ -34,7 +34,7 @@ curl \
     ...
 ```
 
-To obtain an API key, follow the instructions to [sign up for Dispatch][signup].
+To obtain an API key, follow the instructions to [sign up for Dispatch][signup] 🚀.
 
 ## Dispatching Calls to Functions
 
