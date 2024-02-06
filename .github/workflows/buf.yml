@@ -27,7 +27,7 @@ jobs:
     - uses: bufbuild/buf-setup-action@v1
     - uses: bufbuild/buf-breaking-action@v1
       with:
-        against: https://github.com/stealthrocket/dispatch.git#branch=${{ env.GITHUB_BASE_REF || 'main' }},subdir=${{ matrix.directory }}
+        against: https://github.com/stealthrocket/dispatch-sdk-protobuf.git#branch=${{ env.GITHUB_BASE_REF || 'main' }}
         buf_token: ${{ secrets.BUF_TOKEN }}
 
   push:
