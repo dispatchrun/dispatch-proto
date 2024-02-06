@@ -3,6 +3,7 @@ syntax = "proto3";
 package dispatch.sdk.v1;
 
 // SigningKeyService is used to manage signing keys of programmable endpoints.
+// For security reasons, users only get access to the public keys.
 service SigningKeyService {
   // CreateSigningKey creates a new signing key pair.
   // Currently, signing keys are generated with ED25519.
