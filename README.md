@@ -2,9 +2,9 @@
 [![MIT License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
 
-# Dispatch API
+# Dispatch SDK
 
-This module contains the protobuf definitions for the Dispatch API.
+This module contains the protobuf definitions for the Dispatch SDK.
 
 [connectrpc]:   https://connectrpc.com/
 [grpc]:         https://grpc.io/
@@ -25,8 +25,8 @@ generate [connectrpc][connectrpc] or [gRPC][grpc] clients and servers.
 
 ## Authentication
 
-To authenticate with the Dispatch API, a client must present a valid API key
-in the `Authorization` header of the HTTP requests, for example:
+To authenticate with the Dispatch control plane, a client must present a valid
+API key in the `Authorization` header of the HTTP requests, for example:
 
 ```sh
 curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchRequest/Dispatch \
@@ -51,8 +51,7 @@ Function endpoints are implemented by exposing the
 [`dispatch.sdk.v1.FunctionService/Run`][rpc-function]
 method on a [connectrpc][connectrpc] or [gRPC][grpc] endpoint.
 
-The scheduler will make the function calls that were submitted via the Dispatch
-API.
+The scheduler will make the function calls that were submitted via the API.
 
 ### Verification of Function Calls
 
