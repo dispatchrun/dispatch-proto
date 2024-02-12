@@ -8,6 +8,26 @@ package dispatch.sdk.v1;
 // Categorization of success and failure conditions is done via the status
 // field in the ExecuteResponse message.
 message Error {
+  // The type of error that occurred.
+  //
+  // This value is language and application specific. It is is used to provide
+  // debugging information to the user.
   string type = 1;
+
+  // A human-readable message providing more details about the error.
   string message = 2;
+
+  // A language-specific representation of the error.
+  //
+  // This field is used to enable propagation of the error value between
+  // instances of a program, by encoding information allowing the error value
+  // to be reconstructed.
+  bytes value = 3;
+
+  // The encoded stack trace for the error.
+  //
+  // The format is language-specific, encoded in the standard format used by
+  // each programming language to represent stack traces. Not all languages have
+  // stack traces for errors, so in some cases the value might be omitted.
+  bytes traceback = 4;
 }
