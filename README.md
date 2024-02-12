@@ -1,6 +1,7 @@
 [![Build](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml)
 [![MIT License](https://img.shields.io/badge/license-Apache%202-blue.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
+<img align="right" src="https://github.com/stealthrocket/dispatch-sdk-protobuf/assets/865510/d1079e83-d283-4351-9660-8abab0f23d66" width="250"/>
 
 # Dispatch SDK
 
@@ -29,7 +30,7 @@ To authenticate with the Dispatch control plane, a client must present a valid
 API key in the `Authorization` header of the HTTP requests, for example:
 
 ```sh
-curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchRequest/Dispatch \
+curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchService/Dispatch \
     -H "Authorization: Bearer $DISPATCH_API_KEY" \
     ...
 ```
