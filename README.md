@@ -7,11 +7,19 @@
 
 This module contains the protobuf definitions for the Dispatch SDK.
 
-[connectrpc]:   https://connectrpc.com/
-[grpc]:         https://grpc.io/
-[signup]:       https://docs.stealthrocket.cloud/dispatch/getting-started
-[rpc-dispatch]: https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.DispatchService.Dispatch
-[rpc-function]: https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.FunctionService.Run
+[connectrpc]:      https://connectrpc.com/
+[grpc]:            https://grpc.io/
+[http-signatures]: https://datatracker.ietf.org/doc/draft-ietf-httpbis-message-signatures/19/
+[signup]:          https://docs.stealthrocket.cloud/dispatch/getting-started
+[rpc-dispatch]:    https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.DispatchService.Dispatch
+[rpc-function]:    https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.FunctionService.Run
+
+- [What is Dispatch?](#what-is-dispatch)
+- [Authentication](#authentication)
+- [Dispatching Calls to Functions](#dispatching-calls-to-functions)
+- [Running Function Calls](#running-function-calls)
+  - [Verification of Function Calls](#verification-of-function-calls)
+- [Contributing](#contributing)
 
 ## What is Dispatch?
 
@@ -60,12 +68,13 @@ When calling functions, requests are signed using asymmetric key pairs. The priv
 key is stored on the Dispatch platform, and the server uses the private key to
 verify the signature of requests it receives.
 
-The signature is embedded in a `Signature` header, for example:
+The signature mechanism uses the [HTTP Signatures IETF Draft][http-signatures],
+with the following signing fields:
 
-    Signature: <signature>
+    @method, @path, @authority, content-type, content-digest
 
 The request signature is generated using the ed25519 cryptographic function,
-using the request body as input.
+the `keyid` in the signature is set to `default`.
 
 ## Contributing
 
