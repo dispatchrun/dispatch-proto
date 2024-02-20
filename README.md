@@ -75,6 +75,36 @@ with the following signing fields:
 The request signature is generated using the ed25519 cryptographic function,
 the `keyid` in the signature is set to `default`.
 
+### HTTP Status Codes
+
+The protocol uses HTTP status codes to communicate errors that occurred before
+any function could be run (e.g., due to invalid requests).
+
+| Status | Reason                                             |
+| :----- | :------------------------------------------------- |
+| 200    | The requested function ran successfuly             |
+| 400    | Malformed requests (e.g., missing function name)   |
+| 401    | Missing or malformed signature in the HTTP request |
+| 403    | An invalid signature was found in the HTTP request |
+| 404    | The requested function did not exist               |
+
+When responses containing those status codes are returned, the content type is
+**application/json** and the body is a JSON object with this structure:
+```json
+{
+  "code": "unauthenticated",
+  "message": "missing request signature"
+}
+```
+
+This format follows the [connectrpc][connectrpc] protocol, the **code** is set
+according to the [http-to-error-code](https://connectrpc.com/docs/protocol/#http-to-error-code)
+specification, and the **message** contains a description of the error intended
+to provide operators insight into the reason why the request failed.
+
+Proxies on the request path can also return other HTTP status codes such as
+429 to apply rate limits or 504 if a timeout occurred.
+
 ## Contributing
 
 Contributions are always welcome! Would you spot a typo or anything that needs
