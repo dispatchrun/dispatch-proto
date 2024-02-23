@@ -4,6 +4,7 @@ package dispatch.sdk.v1;
 
 import "buf/validate/validate.proto";
 import "dispatch/sdk/v1/call.proto";
+import "dispatch/sdk/v1/error.proto";
 import "google/protobuf/duration.proto";
 
 // Poll is a directive to make asynchronous calls and join on their results.
@@ -41,4 +42,9 @@ message PollResult {
   // The list of results from calls that were made by the coroutine and
   // completed during the poll.
   repeated CallResult results = 2;
+
+  // Error that occured processing a Poll directive. An error indicates
+  // that none of the calls were dispatched, and must be resubmitted
+  // after the error cause has been resolved.
+  Error error = 3;
 }
