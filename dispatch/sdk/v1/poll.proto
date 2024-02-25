@@ -24,9 +24,17 @@ message Poll {
   ];
 
   // Max results is the maximum number of call results to deliver in the
-  // poll response. The coroutine will be suspended until either max_results
-  // are available, or the max_wait timeout is reached, whichever comes first.
+  // poll response.
   int32 max_results = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int32.gte = 1,
+    (buf.validate.field).int32.lte = 1000
+  ];
+
+  // Min results is the minimum number of call results to wait for before the
+  // task is resumed. The coroutine will be suspended until either min_results
+  // are available, or the max_wait timeout is reached, whichever comes first.
+  int32 min_results = 5 [
     (buf.validate.field).required = true,
     (buf.validate.field).int32.gte = 1,
     (buf.validate.field).int32.lte = 1000
