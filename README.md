@@ -1,8 +1,11 @@
-[![Build](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml)
-[![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
-<img align="right" src="https://github.com/stealthrocket/dispatch-sdk-protobuf/assets/865510/87162355-e184-4058-a733-650eee53f333" width="200"/>
+<p align="center">
+<img src="https://github.com/stealthrocket/dispatch-sdk-protobuf/assets/865510/87162355-e184-4058-a733-650eee53f333" width="160"/>
+</p>
 
 # Dispatch SDK
+
+[![Build](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml)
+[![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
 
 This module contains the protobuf definitions for the Dispatch SDK.
 
