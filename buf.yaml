@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/stealthrocket/dispatch-sdk
+name: buf.build/stealthrocket/dispatch-proto
 deps:
 - buf.build/bufbuild/protovalidate
 breaking:
