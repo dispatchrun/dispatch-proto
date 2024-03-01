@@ -25,7 +25,7 @@ jobs:
     - uses: bufbuild/buf-setup-action@v1
     - uses: bufbuild/buf-breaking-action@v1
       with:
-        against: https://github.com/stealthrocket/dispatch-sdk-protobuf.git#branch=${{ env.GITHUB_BASE_REF || 'main' }}
+        against: https://github.com/stealthrocket/dispatch-proto.git#branch=${{ env.GITHUB_BASE_REF || 'main' }}
 
   push:
     runs-on: ubuntu-latest

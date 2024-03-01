@@ -1,20 +1,21 @@
 <p align="center">
-<img src="https://github.com/stealthrocket/dispatch-sdk-protobuf/assets/865510/87162355-e184-4058-a733-650eee53f333" width="160"/>
+<img src="https://github.com/stealthrocket/dispatch-proto/assets/865510/87162355-e184-4058-a733-650eee53f333" width="160"/>
 </p>
 
-# Dispatch SDK
+# Protobuf definitions for Dispatch
 
-[![Build](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-sdk-protobuf/actions/workflows/buf.yml)
-[![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1)
+[![Build](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml)
+[![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1)
 
-This module contains the protobuf definitions for the Dispatch SDK.
+This module contains the protobuf definitions to integrate with the Dispatch
+platform.
 
 [connectrpc]:      https://connectrpc.com/
 [grpc]:            https://grpc.io/
 [http-signatures]: https://datatracker.ietf.org/doc/draft-ietf-httpbis-message-signatures/19/
 [signup]:          https://docs.stealthrocket.cloud/stateful-functions/getting-started
-[rpc-dispatch]:    https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.DispatchService.Dispatch
-[rpc-function]:    https://buf.build/stealthrocket/dispatch-sdk/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.FunctionService.Run
+[rpc-dispatch]:    https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.DispatchService.Dispatch
+[rpc-function]:    https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.FunctionService.Run
 
 - [What is Dispatch?](#what-is-dispatch)
 - [Authentication](#authentication)
