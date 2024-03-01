@@ -2,7 +2,7 @@
 <img src="https://github.com/stealthrocket/dispatch-proto/assets/865510/87162355-e184-4058-a733-650eee53f333" width="160"/>
 </p>
 
-# Protobuf definitions for Dispatch
+# dispatch-proto
 
 [![Build](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml)
 [![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1)
