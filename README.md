@@ -41,7 +41,7 @@ To authenticate with the Dispatch control plane, a client must present a valid
 API key in the `Authorization` header of the HTTP requests, for example:
 
 ```sh
-curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchService/Dispatch \
+curl https://api.dispatch.run/dispatch.sdk.v1.DispatchService/Dispatch \
     -H "Authorization: Bearer $DISPATCH_API_KEY" \
     ...
 ```
