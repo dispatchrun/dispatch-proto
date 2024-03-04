@@ -13,7 +13,7 @@ platform.
 [connectrpc]:      https://connectrpc.com/
 [grpc]:            https://grpc.io/
 [http-signatures]: https://datatracker.ietf.org/doc/draft-ietf-httpbis-message-signatures/19/
-[signup]:          https://docs.stealthrocket.cloud/stateful-functions/getting-started
+[signup]:          https://docs.dispatch.run/stateful-functions/getting-started
 [rpc-dispatch]:    https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.DispatchService.Dispatch
 [rpc-function]:    https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1#dispatch.sdk.v1.FunctionService.Run
 
@@ -41,7 +41,7 @@ To authenticate with the Dispatch control plane, a client must present a valid
 API key in the `Authorization` header of the HTTP requests, for example:
 
 ```sh
-curl https://api.stealthrocket.cloud/dispatch.sdk.v1.DispatchService/Dispatch \
+curl https://api.dispatch.run/dispatch.sdk.v1.DispatchService/Dispatch \
     -H "Authorization: Bearer $DISPATCH_API_KEY" \
     ...
 ```
