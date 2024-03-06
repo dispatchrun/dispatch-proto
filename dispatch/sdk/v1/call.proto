@@ -27,7 +27,7 @@ message Call {
   // received by the function service when the asynchronous call is made.
   string function = 3 [
     (buf.validate.field).required = true,
-    (buf.validate.field).string.pattern = "^[a-zA-Z_][a-zA-Z0-9_]*$"
+    (buf.validate.field).string.pattern = "^[a-zA-Z_][a-zA-Z0-9_<>]*$"
   ];
 
   // Arguments to the coroutine.
