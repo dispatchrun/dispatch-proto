@@ -31,7 +31,7 @@ message DispatchRequest {
 
   option (buf.validate.message).cel = {
     id: "dispatch.request.calls.endpoint.scheme",
-    message: "Call endpoint must be a http or https URL",
+    message: "Call endpoint must be a http, https or a bridge URL or an AWS Lambda ARN",
     expression: "this.calls.all(call, call.endpoint.startsWith('http://') || call.endpoint.startsWith('https://') || call.endpoint.startsWith('bridge://')) || call.endpoint.startsWith('arn:aws:lambda')"
   };
 
