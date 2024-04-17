@@ -57,4 +57,7 @@ message CallResult {
   // It is valid to have both an output and an error, in which case the output
   // might contain a partial result.
   Error error = 3;
+
+  // Opaque identifier for the function call.
+  string dispatch_id = 4;
 }

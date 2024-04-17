@@ -47,6 +47,21 @@ message RunRequest {
   // It's the same value as the Dispatch ID that was returned when the call
   // was dispatched (on DispatchResponse).
   string dispatch_id = 4;
+
+  // Opaque identifier for the parent function call.
+  //
+  // Functions can call other functions via Poll.calls. If this function call
+  // has a parent function call, the identifier of the parent can be found
+  // here. If the function call does not have a parent, the field will
+  // be empty.
+  string parent_dispatch_id = 5;
+
+  // Opaque identifier for the root function call.
+  //
+  // When functions call other functions, an additional level on the call
+  // hierarchy tree is created. This field carries the identifier of the
+  // root function call in the tree.
+  string root_dispatch_id = 6;
 }
 
 // RunResponse is returned by calls to the Run method of FunctionService.
