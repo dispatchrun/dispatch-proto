@@ -41,6 +41,12 @@ message RunRequest {
     // set of results for operations that have completed.
     PollResult poll_result = 3;
   }
+
+  // Opaque identifier for the function call.
+  //
+  // It's the same value as the Dispatch ID that was returned when the call
+  // was dispatched (on DispatchResponse).
+  string dispatch_id = 4;
 }
 
 // RunResponse is returned by calls to the Run method of FunctionService.
