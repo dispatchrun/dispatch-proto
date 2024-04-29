@@ -6,6 +6,7 @@ import "dispatch/sdk/v1/exit.proto";
 import "dispatch/sdk/v1/poll.proto";
 import "dispatch/sdk/v1/status.proto";
 import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
 
 // The FunctionService service is used to interface with programmable endpoints
 // exposing remote functions.
@@ -62,6 +63,14 @@ message RunRequest {
   // hierarchy tree is created. This field carries the identifier of the
   // root function call in the tree.
   string root_dispatch_id = 6;
+
+  // Time at which the function call was created.
+  //
+  // Note that if the function tail-calls, the timestamp is not reset.
+  google.protobuf.Timestamp created_at = 7;
+
+  // Time at which the function call expires.
+  google.protobuf.Timestamp expires_at = 8;
 }
 
 // RunResponse is returned by calls to the Run method of FunctionService.
