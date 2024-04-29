@@ -67,10 +67,10 @@ message RunRequest {
   // Time at which the function call was created.
   //
   // Note that if the function tail-calls, the timestamp is not reset.
-  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp creation_time = 7;
 
   // Time at which the function call expires.
-  google.protobuf.Timestamp expires_at = 8;
+  google.protobuf.Timestamp expiration_time = 8;
 }
 
 // RunResponse is returned by calls to the Run method of FunctionService.
