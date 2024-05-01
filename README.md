@@ -1,10 +1,10 @@
 <p align="center">
-<img src="https://github.com/stealthrocket/dispatch-proto/assets/865510/87162355-e184-4058-a733-650eee53f333" width="160"/>
+<img src="https://github.com/dispatchrun/.github/blob/main/profile/dispatch_logo_light.png?raw=true" height="64"/>
 </p>
 
 # dispatch-proto
 
-[![Build](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/stealthrocket/dispatch-proto/actions/workflows/buf.yml)
+[![Build](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml)
 [![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1)
 
 This module contains the protobuf definitions to integrate with the Dispatch
