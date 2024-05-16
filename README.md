@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://github.com/dispatchrun/.github/blob/main/profile/dispatch_logo_light.png?raw=true" height="64"/>
-</p>
-
 # dispatch-proto
 
 [![Build](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml)
