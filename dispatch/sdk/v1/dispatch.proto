@@ -4,6 +4,7 @@ package dispatch.sdk.v1;
 
 import "buf/validate/validate.proto";
 import "dispatch/sdk/v1/call.proto";
+import "google/protobuf/any.proto";
 
 // DispatchService is a service allowing the trigger of programmable endpoints
 // from a dispatch SDK.
@@ -41,6 +42,12 @@ message DispatchRequest {
   //
   // The correlation ids are ignored in this context.
   repeated Call calls = 1;
+
+  // sched_metadata is an opaque field managed by the Dispatch scheduler.
+  optional google.protobuf.Any sched_metadata = 2;
+
+  // sched_config is an opaque field managed by the Dispatch scheduler.
+  optional google.protobuf.Any sched_config = 3;
 }
 
 // DispatchResponse is returned by calls to the Dispatch method of
