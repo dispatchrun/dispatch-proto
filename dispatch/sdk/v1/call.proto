@@ -39,6 +39,10 @@ message Call {
   //
   // The value might be capped to a maximum by the service handling the call.
   google.protobuf.Duration expiration = 5 [(buf.validate.field).duration.gte = {seconds: 0}];
+
+  // Version of the application to select during execution.
+  // The version is an optional field and not supported by all execution platforms.
+  string version = 6;
 }
 
 // CallResult is the result of a call operation.
