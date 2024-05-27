@@ -40,7 +40,7 @@ message DispatchRequest {
   // The calls must have a non-empty endpoint which are valid http or https URLs.
   //
   // The correlation ids are ignored in this context.
-  repeated Call calls = 1;
+  repeated Call calls = 1 [(buf.validate.field).required = true];
 }
 
 // DispatchResponse is returned by calls to the Dispatch method of
