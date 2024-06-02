@@ -10,8 +10,7 @@
 [![Build](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml/badge.svg)](https://github.com/dispatchrun/dispatch-proto/actions/workflows/buf.yml)
 [![Docs](https://img.shields.io/badge/API-reference-lightblue.svg)](https://buf.build/stealthrocket/dispatch-proto/docs/main:dispatch.sdk.v1)
 
-This module contains the protobuf definitions to integrate with the Dispatch
-platform.
+This module contains the protobuf definitions to integrate with Dispatch.
 
 [connectrpc]:      https://connectrpc.com/
 [grpc]:            https://grpc.io/
@@ -29,11 +28,19 @@ platform.
 
 ## What is Dispatch?
 
-Dispatch is a platform to develop reliable distributed systems. Dispatch
-provides a simple programming model based on durable coroutines to manage the
-scheduling of function calls across a fleet of service instances. Orchestration
-of function calls is managed by Dispatch, providing **fair scheduling**,
-transparent **retry of failed operations**, and **durability**.
+Dispatch is a cloud service for developing scalable and reliable applications,
+including:
+
+- **Event-Driven Architectures**
+- **Background Jobs**
+- **Transactional Workflows**
+- **Multi-Tenant Data Pipelines**
+
+Dispatch differs from alternative solutions by allowing developers top write
+simple Python code: it has a **minimal API footprint**, which usually only
+requires using a function decorator (no complex framework to learn), failure
+recovery is built-in by default for transient errors like rate limits or
+timeouts, with a **zero-configuration** model.
 
 To interact with the Dispatch scheduler, the client SDK uses this module to
 generate [connectrpc][connectrpc] or [gRPC][grpc] clients and servers.
@@ -53,9 +60,8 @@ To obtain an API key, follow the instructions to [sign up for Dispatch][signup] 
 
 ## Dispatching Calls to Functions
 
-The dispatch service is the frontend to the platform. Clients can submit calls
-to functions implemented in their application, using the
-[`dispatch.sdk.v1.DispatchService/Dispatch`][rpc-dispatch] method.
+Clients can submit calls to functions implemented in their application, using
+the [`dispatch.sdk.v1.DispatchService/Dispatch`][rpc-dispatch] method.
 
 The request contains the list of calls that will be performed asynchronously by
 the scheduler.
@@ -71,8 +77,8 @@ The scheduler will make the function calls that were submitted via the API.
 ### Verification of Function Calls
 
 When calling functions, requests are signed using asymmetric key pairs. The private
-key is stored on the Dispatch platform, and the server uses the private key to
-verify the signature of requests it receives.
+key is stored by Dispatch, and the server uses the private key to verify the
+signature of requests it receives.
 
 The signature mechanism uses the [HTTP Signatures IETF Draft][http-signatures],
 with the following signing fields:
