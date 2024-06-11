@@ -5,6 +5,8 @@ deps:
 breaking:
   use:
   - WIRE_JSON
+  except:
+  - FIELD_SAME_ONEOF
 lint:
   use:
   - DEFAULT
