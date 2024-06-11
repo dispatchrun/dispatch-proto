@@ -4,7 +4,7 @@ deps:
 - buf.build/bufbuild/protovalidate
 breaking:
   use:
-  - FILE
+  - WIRE_JSON
 lint:
   use:
   - DEFAULT
