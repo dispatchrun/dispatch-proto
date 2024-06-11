@@ -43,8 +43,6 @@ message Poll {
     (buf.validate.field).int32.gte = 1,
     (buf.validate.field).int32.lte = 1000
   ];
-
-  // State of the function. The same state is sent back on the PollResult.
 }
 
 // PollResult is the response to a Poll directive.
