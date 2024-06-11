@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package dispatch.sdk.v1.object.python;
+package dispatch.sdk.object.python.v1;
 
 // Pickled is a wrapper for a value that was serialized with
 // the Python pickle package.
