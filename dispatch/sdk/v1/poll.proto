@@ -5,13 +5,14 @@ package dispatch.sdk.v1;
 import "buf/validate/validate.proto";
 import "dispatch/sdk/v1/call.proto";
 import "dispatch/sdk/v1/error.proto";
+import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 
 // Poll is a directive to make asynchronous calls and join on their results.
 message Poll {
   // Snapshot of the coroutine state that will be used in the next run to
   // resume the function.
-  bytes coroutine_state = 1;
+  bytes coroutine_state = 1 [deprecated = true];
 
   // Calls to make asynchronously.
   repeated Call calls = 2;
@@ -39,13 +40,16 @@ message Poll {
     (buf.validate.field).int32.gte = 1,
     (buf.validate.field).int32.lte = 1000
   ];
+
+  // State of the function. The same state is sent back on the PollResult.
+  google.protobuf.Any state = 6;
 }
 
 // PollResult is the response to a Poll directive.
 message PollResult {
   // The coroutine state that was recorded by the coroutine when it was last
   // paused.
-  bytes coroutine_state = 1;
+  bytes coroutine_state = 1 [deprecated = true];
 
   // The list of results from calls that were made by the coroutine and
   // completed during the poll.
@@ -55,4 +59,7 @@ message PollResult {
   // that none of the calls were dispatched, and must be resubmitted
   // after the error cause has been resolved.
   Error error = 3;
+
+  // State of the function when polling.
+  google.protobuf.Any state = 4;
 }
