@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package dispatch.sdk.python.v1;
+
+import "google/protobuf/any.proto";
+
+// KeywordArgument is a argument with a name.
+message KeywordArgument {
+  string name = 1;
+  google.protobuf.Any argument = 2;
+}

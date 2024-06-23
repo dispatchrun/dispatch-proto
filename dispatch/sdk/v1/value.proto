@@ -19,3 +19,8 @@ message MapItem {
   google.protobuf.Any key = 1;
   google.protobuf.Any value = 2;
 }
+
+// Arguments is a set of function call arguments.
+message Arguments {
+  repeated google.protobuf.Any arguments = 1;
+}
