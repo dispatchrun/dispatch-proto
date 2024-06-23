@@ -8,3 +8,14 @@ import "google/protobuf/any.proto";
 message List {
   repeated google.protobuf.Any items = 1;
 }
+
+// Map is a map of key/value pairs.
+message Map {
+  repeated MapItem items = 1;
+}
+
+// MapItem is a key/value pair in a map.
+message MapItem {
+  google.protobuf.Any key = 1;
+  google.protobuf.Any value = 2;
+}
